@@ -1,0 +1,27 @@
+{
+  "author":"SUPINFO AppFactory"
+  ,"pluginName":"WebView"
+  ,"pluginDescription":"Online ordering system used by leading restaurant brands, enabling easy website, mobile, and Facebook orders for customers.Related Topics: Bible, Advertising, Blog"
+  ,"supportEmail":"supinfoappfactory@supinfo.com"
+  ,"pluginIcon":"icon.png"
+  ,"licenseKey": "a4sd6-as654asd6as545a65s4d6a-65asd564a"
+  ,"control":{
+    "content":{
+      "enabled":true
+    }
+    , "design":{
+      "enabled":false
+    }
+    , "settings":{
+      "enabled":false
+    }
+  }
+  ,"widget":{
+
+  },
+  "features":[
+   ],
+   "languages":[
+      "en"
+   ]
+}

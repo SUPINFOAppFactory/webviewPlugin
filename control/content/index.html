@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html ng-app="webviewPlugin">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>content</title>
+  <!-- CSS -->
+  <link href="../../../../styles/helper.css" rel="stylesheet">
+  <link href="../../../../styles/siteIcons.css" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="../../../../scripts/buildfire.js"></script>
+  <script src="../../../../scripts/angular/angular.min.js"></script>
+  <script src="app.js"></script>
+  <style>
+    .radio-block {
+      display: block !important;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body ng-controller="webviewPluginCtrl" id="webviewApp" ng-cloak
+      ng-show="datastoreInitialized">
+<div ng-form="frmMain">
+
+  <div class="item clearfix row margin-bottom-fifteen">
+    <div class="labels col-md-3 padding-right-zero pull-left">
+      <span>URL</span>
+    </div>
+    <div class="main col-md-9 pull-right clearfix">
+      <div class="col-md-9 pull-left padding-left-zero">
+        <input id="url" name="url" type="text" class="form-control"
+               ng-model="data.content.url">
+      </div>
+      <div class="col-md-3 pull-right padding-zero">
+        <button class="btn btn-success stretch" ng-click="validateUrl()"
+                ng-disabled="!data.content.url">
+          Validate
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="item clearfix row"
+       ng-if="data.content.url && !isUrlValid(data.content.url)">
+    <div class="main pull-right col-md-9">
+      <p style="color: #ff7164">Seems like
+        your url is not valid ! But if you
+        want,
+        you can
+        still
+        add it
+        to your plugin.</p>
+    </div>
+  </div>
+
+  <div class="item clearfix row">
+    <div class="main pull-right col-md-9">
+      <div class="alert alert-success alert-sm text-center" ng-if="urlValid">Url
+        successfully validated
+      </div>
+      <div class="alert alert-danger alert-sm text-center" ng-if="urlInValid">
+        Invalid Url
+      </div>
+    </div>
+  </div>
+  <hr class="none">
+  <div class="item clearfix row">
+    <div class="col-md-9 pull-right">
+      <div class="radio radio-primary radio-block">
+        <input id="inapp" type="radio" ng-model="data.content.view"
+               ng-value="viewType.NATIVE_IN_APP"
+               name="viewType" ng-change="changeViewType()">
+        <label for="inapp">Native in app</label>
+      </div>
+      <div class="radio radio-primary radio-block">
+        <input id="popup" type="radio" ng-model="data.content.view"
+               ng-value="viewType.IN_APP_POPUP"
+               name="viewType" ng-change="changeViewType()">
+        <label for="popup">In app popup window</label>
+      </div>
+      <div class="radio radio-primary radio-block">
+        <input id="external" type="radio" ng-model="data.content.view"
+               ng-value="viewType.EXTERNAL_BROWSER"
+               name="viewType" ng-change="changeViewType()">
+        <label for="external">Device's default external browser</label>
+      </div>
+      <br>
+
+      <p class="info padding-zero">Note 1: For the best user experience, link to
+        mobile optimized content. <br>(Disclaimer: Some websites will show
+        mobile version of site only on mobile devices.)</p>
+
+      <p class="info padding-zero">Note 2: Certain websites like Google,
+        Amazon, and others have limitations and/or internal policies that
+        prohibit it from being shown in the app's native component.
+        Therefore, if your web page does not show up in this selection, please
+        try using one of the other two methods.</p>
+
+      <p class="info padding-zero">Note 3: If you are taking payments through
+        this web page, you must open the the URL outside of the app or the app
+        will get rejected by Apple in the submission review process.</p>
+
+      <p class="info padding-zero">Hint: If you are taking payments, use your
+        app or content DeepLink URL to redirect back to the app after a payment
+        is made.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
